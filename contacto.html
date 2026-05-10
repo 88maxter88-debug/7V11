@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Diego Encarnacion Alvarez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="marca de ropa Streetwear">
+    <meta name="keywords" content="clothes, Streetwear, moda">
+    <link rel="shortcut icon" href="img/icono.png" type="image/x-icon"> 
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Contacto | S7E11N</title>
+</head>
+
+<body class="contact-page">
+<script src="script.js" defer></script>
+<header class="header-pro" id="main-header">
+    <div class="header-left"></div>
+
+    <div class="logo-box">
+        <a href="index.html">
+            <img class="logo" src="img/logo7v11.png" alt="Logo S7E11N">
+        </a>
+    </div>
+
+    <div class="header-actions">
+        <select class="select-minimal">
+            <option>RD$ | ES</option>
+            <option>USD | EN</option>
+        </select>
+
+        <div class="user-cart">
+            <a href="contacto.html" title="Mi Cuenta">
+                <img src="img/user.png" alt="Cuenta" class="icon-custom">
+            </a>
+            <a href="cesta.html" class="cart-icon" title="Carrito">
+                <img src="img/cesta.png" alt="Carrito" class="icon-custom">
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<main class="sectioncentro">
+
+    <h2 class="titulo-seccion">Contáctanos</h2>
+
+    <div class="grid-contacto">
+
+        <!-- FORMULARIO -->
+        <section class="card-form">
+            <h3>Déjanos tu mensaje</h3>
+
+            <form action="/comentarios" method="post">
+                <label>Nombre</label>
+                <input type="text" name="nombre" required placeholder="Tu nombre">
+
+                <label>Apellido</label>
+                <input type="text" name="apellido" required placeholder="Tu apellido">
+
+                <label>Comentario</label>
+                <textarea name="comentario" rows="5" placeholder="Escribe tu mensaje"></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+
+        <!-- LOGIN -->
+        <section class="card-form">
+            <h3>Iniciar sesión</h3>
+
+            <form action="/login" method="post">
+                <label>Correo</label>
+                <input type="email" name="correo" required placeholder="Correo">
+
+                <label>Contraseña</label>
+                <input type="password" name="contraseña" required placeholder="Contraseña">
+
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+
+    </div>
+
+    
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- MARCA -->
+        <div class="footer-col">
+            <h3>S7E11N</h3>
+            <p>Streetwear dominicano. Estilo, calidad y actitud.</p>
+        </div>
+
+ <!-- REDES -->
+    <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+        <!-- AYUDA -->
+        <div class="footer-col">
+            <h4>Ayuda</h4>
+            <ul>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="dudas.html">Preguntas frecuentes</a></li>
+                <li><a href="dudas.html">Envíos</a></li>
+                <li><a href="dudas.html">Devoluciones</a></li>
+            </ul>
+        </div>
+
+        <!-- CUENTA -->
+        <div class="footer-col">
+            <h4>Cuenta</h4>
+            <ul>
+                <li><a href="contacto.html">Iniciar sesión</a></li>
+                <li><a href="cesta.html">Mis pedidos</a></li>
+                <li><a href="cesta.html">Carrito</a></li>
+            </ul>
+        </div>
+
+        <!-- EMPRESA -->
+        <div class="footer-col">
+            <h4>Nosotros</h4>
+            <ul>
+                <li><a href="nosotros.html">Sobre la marca</a></li>
+                <li><a href="catálogo.html">Colecciones</a></li>
+                <li><a href="#">Colaboraciones</a></li>
+            </ul>
+        </div>
+
+        <!-- IDIOMA -->
+        <div class="footer-col">
+            <h4>Idioma / Moneda</h4>
+            <select>
+                <option>Español (RD$)</option>
+                <option>English (USD)</option>
+            </select>
+        </div>
+
+<div class="footer-col">
+
+
+    <!-- BOTÓN TEMA -->
+    <button id="toggle-theme" class="theme-btn">
+        <i class="fa-solid fa-moon"></i> Tema
+    </button>
+</div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <p class="footer-copy">
+        &copy; 2026 S7E11N - Todos los derechos reservados
+    </p>
+
+</footer>
+
+</body>
+</html>
