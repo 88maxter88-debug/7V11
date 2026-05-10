@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    crearUIFlotanteCarrito();
     inicializarTema();
     configurarCategorias();
     configurarCatalogo();
@@ -8,6 +9,61 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarContadorCesta();
     renderizarCarrito(); // Solo actuará si estamos en cesta.html
 });
+
+function crearUIFlotanteCarrito() {
+    if (document.querySelector('.floating-cart')) return;
+
+    const floatingCart = document.createElement('a');
+    floatingCart.className = 'floating-cart';
+    floatingCart.href = 'cesta.html';
+    floatingCart.setAttribute('aria-label', 'Abrir carrito');
+    floatingCart.innerHTML = `
+        <span class="floating-cart__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+                <path d="M3 4h2.2a1 1 0 0 1 .97.757L6.6 7H20a1 1 0 0 1 .97 1.243l-1.5 6A1 1 0 0 1 18.5 15H8.1a1 1 0 0 1-.97-.757L5.1 6H3a1 1 0 1 1 0-2Zm5.88 9h8.84l1-4H7.88l1 4ZM9 19.5A1.5 1.5 0 1 1 9 22a1.5 1.5 0 0 1 0-2.5Zm8 0A1.5 1.5 0 1 1 17 22a1.5 1.5 0 0 1 0-2.5Z"/>
+            </svg>
+        </span>
+        <span class="cart-count floating-cart__count">0</span>
+    `;
+
+    const toast = document.createElement('div');
+    toast.className = 'cart-toast';
+    toast.setAttribute('aria-live', 'polite');
+    toast.innerHTML = `
+        <div class="cart-toast__content">
+            <p class="cart-toast__message">Anadido al carrito ✓</p>
+            <a class="cart-toast__action" href="cesta.html">Ver carrito</a>
+        </div>
+    `;
+
+    document.body.append(floatingCart, toast);
+}
+
+function mostrarToastCarrito() {
+    const toast = document.querySelector('.cart-toast');
+    if (!toast) return;
+
+    toast.classList.remove('is-visible');
+    window.clearTimeout(mostrarToastCarrito.timeoutId);
+
+    requestAnimationFrame(() => {
+        toast.classList.add('is-visible');
+    });
+
+    mostrarToastCarrito.timeoutId = window.setTimeout(() => {
+        toast.classList.remove('is-visible');
+    }, 2800);
+}
+
+function animarBotonCarrito() {
+    const floatingCart = document.querySelector('.floating-cart');
+    if (!floatingCart) return;
+
+    floatingCart.classList.remove('is-bumping');
+    requestAnimationFrame(() => {
+        floatingCart.classList.add('is-bumping');
+    });
+}
 
 // =========================================
 // MODO OSCURO
@@ -299,6 +355,8 @@ window.agregarProducto = function(btn) {
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarContadorCesta();
+    animarBotonCarrito();
+    mostrarToastCarrito();
     
     // Feedback visual opcional
     const textoOriginal = btn.textContent;
@@ -342,6 +400,8 @@ window.agregarOutfit = function(btn) {
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarContadorCesta();
+    animarBotonCarrito();
+    mostrarToastCarrito();
 
     const textoOriginal = btn.textContent;
     btn.textContent = 'Agregado';
